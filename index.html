@@ -74,6 +74,156 @@ html[data-theme="dark"] #cs-transition-overlay{background:radial-gradient(circle
 </style>
 </head>
 <body>
+    <!-- 初次访问密码验证层 -->
+<div id="access-gate-overlay" style="display: none;">
+    <div class="access-gate-card">
+        <div class="access-gate-question">初见日期</div>
+        <input type="password" id="access-gate-input" autocomplete="off" />
+        <div id="access-gate-error" class="access-gate-error"></div>
+        <button type="button" id="access-gate-submit" class="access-gate-btn">进入</button>
+    </div>
+</div>
+
+<style>
+    #access-gate-overlay {
+        position: fixed;
+        inset: 0;
+        z-index: 99999;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: var(--welcome-bg, radial-gradient(circle at center, #14141d 0%, #09090d 100%));
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        transition: opacity 0.4s ease;
+    }
+
+    #access-gate-overlay.hidden {
+        opacity: 0;
+        pointer-events: none;
+    }
+
+    .access-gate-card {
+        width: 88%;
+        max-width: 340px;
+        padding: 36px 28px 30px;
+        border-radius: 24px;
+        background: rgba(24, 24, 34, 0.72);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.65), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .access-gate-question {
+        font-size: 16px;
+        letter-spacing: 3px;
+        color: var(--welcome-text-main, rgba(255, 255, 255, 0.88));
+        margin-bottom: 22px;
+        font-weight: 500;
+    }
+
+    #access-gate-input {
+        width: 100%;
+        height: 44px;
+        padding: 0 16px;
+        border-radius: 12px;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        background: rgba(10, 10, 15, 0.65);
+        color: #ffffff;
+        font-size: 16px;
+        letter-spacing: 3px;
+        text-align: center;
+        outline: none;
+        transition: border-color 0.25s ease, box-shadow 0.25s ease;
+        box-sizing: border-box;
+    }
+
+    #access-gate-input:focus {
+        border-color: rgba(255, 255, 255, 0.35);
+        box-shadow: 0 0 16px rgba(255, 255, 255, 0.08);
+    }
+
+    .access-gate-error {
+        min-height: 18px;
+        margin-top: 8px;
+        font-size: 12px;
+        letter-spacing: 1px;
+        color: rgba(255, 120, 130, 0.9);
+    }
+
+    .access-gate-btn {
+        margin-top: 10px;
+        width: 100%;
+        height: 42px;
+        border-radius: 12px;
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        background: rgba(255, 255, 255, 0.08);
+        color: rgba(255, 255, 255, 0.9);
+        font-size: 14px;
+        letter-spacing: 4px;
+        cursor: pointer;
+        transition: background 0.25s ease, border-color 0.25s ease;
+    }
+
+    .access-gate-btn:hover {
+        background: rgba(255, 255, 255, 0.15);
+        border-color: rgba(255, 255, 255, 0.28);
+    }
+
+    @keyframes gateShake {
+        0%, 100% { transform: translateX(0); }
+        25% { transform: translateX(-6px); }
+        50% { transform: translateX(6px); }
+        75% { transform: translateX(-4px); }
+    }
+
+    .access-gate-shake {
+        animation: gateShake 0.32s ease;
+    }
+</style>
+
+<script>
+    (function () {
+        const STORAGE_KEY = 'my_milk_gate_verified_v1';
+        const ANSWER = '20210204';
+        const overlay = document.getElementById('access-gate-overlay');
+        const input = document.getElementById('access-gate-input');
+        const btn = document.getElementById('access-gate-submit');
+        const errorBox = document.getElementById('access-gate-error');
+
+        if (localStorage.getItem(STORAGE_KEY) === 'true') {
+            overlay.remove();
+            return;
+        }
+
+        overlay.style.display = 'flex';
+        setTimeout(() => input.focus(), 50);
+
+        function verify() {
+            const val = input.value.trim();
+            if (val === ANSWER) {
+                localStorage.setItem(STORAGE_KEY, 'true');
+                overlay.classList.add('hidden');
+                setTimeout(() => overlay.remove(), 420);
+            } else {
+                errorBox.textContent = '答案不正确';
+                input.value = '';
+                input.classList.remove('access-gate-shake');
+                void input.offsetWidth;
+                input.classList.add('access-gate-shake');
+                input.focus();
+            }
+        }
+
+        btn.addEventListener('click', verify);
+        input.addEventListener('keydown', function (e) {
+            if (e.key === 'Enter') verify();
+        });
+    })();
+</script>
     <button id="immersive-exit-btn" onclick="toggleImmersiveMode(false)" title="退出沉浸模式">
 <i class="fas fa-expand"></i>
 </button>
