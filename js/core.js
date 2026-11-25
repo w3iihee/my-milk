@@ -917,7 +917,6 @@ if (customMottos && customMottos.length > 0) {
                     star.style.setProperty('--duration', `${duration}s`);
                     star.style.animationDelay = `${delay}s`;
                     starsContainer.appendChild(star);
-                    }
             }
             const particlesContainer = document.getElementById('welcome-particles');
             if (particlesContainer) {
@@ -970,8 +969,8 @@ if (customMottos && customMottos.length > 0) {
 
 
             const welcomeIcon = getRandomItem(CONSTANTS.WELCOME_ICONS);
-document.querySelector('.logo-icon-main').innerHTML = `<i class="${welcomeIcon}"></i>`;
-
+const logoIconEl = document.querySelector('.logo-icon-main');
+if (logoIconEl && welcomeIcon) { logoIconEl.innerHTML = `<i class="${welcomeIcon}"></i>`; }
 if (customIntros && customIntros.length > 0) {
     const rawIntro = getRandomItem(customIntros);
     const parts = rawIntro.split('|');
@@ -980,11 +979,12 @@ if (customIntros && customIntros.length > 0) {
 
     const titleEl = document.getElementById('welcome-title-glitch');
     const subEl = document.getElementById('welcome-subtitle-scramble');
-
-    titleEl.classList.remove('playing');
-    titleEl.textContent = line1;
-    void titleEl.offsetWidth;
-    titleEl.classList.add('playing');
+if (titleEl) {
+        titleEl.classList.remove('playing');
+        titleEl.textContent = line1;
+        void titleEl.offsetWidth;
+        titleEl.classList.add('playing');
+}
 
     const scrambleText = (element, finalText, duration = 1500) => {
                 const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()';
