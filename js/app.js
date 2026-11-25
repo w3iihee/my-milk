@@ -59,7 +59,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             safeAwait(initMusicPlayer?.())
         ]);
 
-        setInterval(checkStatusChange, 60000);
+        setInterval(() => { if (typeof checkStatusChange === 'function') checkStatusChange(); }, 60000);
 
         // 动态/回信 后台定时检查——不管停在哪个页面，每隔30秒自动看一眼有没有该送达的内容了，
         // 不需要刷新页面或者重新进入情侣空间/信箱才能触发
