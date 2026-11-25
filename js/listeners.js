@@ -1622,28 +1622,7 @@ autoSendSlider.addEventListener('change', () => {
             if (_closeLenormandEl) _closeLenormandEl.addEventListener('click', () => {
                 hideModal(document.getElementById('fortune-lenormand-modal'));
             });
-    const envelopeEntryBtn = document.getElementById('envelope-function');
-    async function openEnvelopeModal() {
-        hideModal(DOMElements.advancedModal.modal);
-        await loadEnvelopeData();
-        await checkEnvelopeStatus();
-        currentEnvTab = 'outbox';
-        document.getElementById('env-tab-outbox').classList.add('active');
-        document.getElementById('env-tab-inbox').classList.remove('active');
-        document.getElementById('env-outbox-section').style.display = 'block';
-        document.getElementById('env-inbox-section').style.display = 'none';
-        document.getElementById('env-compose-form').style.display = 'none';
-        document.getElementById('env-main-close-btn').style.display = 'flex';
-        renderEnvelopeLists();
-        showModal(document.getElementById('envelope-modal'));
-    }
-    if (envelopeEntryBtn) {
-        envelopeEntryBtn.addEventListener('click', openEnvelopeModal);
-    }
-    const envelopeHeaderBtn = document.getElementById('envelope-header-btn');
-    if (envelopeHeaderBtn) {
-        envelopeHeaderBtn.addEventListener('click', openEnvelopeModal);
-    }
+    
     const galleryBanner = document.getElementById('gallery-banner-entry');
     if (galleryBanner) {
         galleryBanner.addEventListener('click', () => {
@@ -1653,13 +1632,6 @@ autoSendSlider.addEventListener('change', () => {
         galleryBanner.addEventListener('mouseup', () => { galleryBanner.style.transform = 'scale(1)'; });
         galleryBanner.addEventListener('mouseleave', () => { galleryBanner.style.transform = 'scale(1)'; });
     }
-const _sendEnvEl = document.getElementById('send-envelope');
-if (_sendEnvEl) _sendEnvEl.addEventListener('click', handleSendEnvelope);
-
-const _cancelEnvEl = document.getElementById('cancel-envelope');
-if (_cancelEnvEl) _cancelEnvEl.addEventListener('click', () => {
-    hideModal(document.getElementById('envelope-modal'));
-});
             const closeFortune = document.getElementById('close-fortune');
             if (closeFortune) {
                 closeFortune.addEventListener('click', () => {

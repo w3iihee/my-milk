@@ -2317,13 +2317,6 @@
             letter-spacing: 1.5px;
             text-transform: uppercase;
         }
-
-        #envelope-modal .modal-content {
-            padding: 0 !important;
-            overflow: hidden !important;
-            border-radius: 20px;
-            background: transparent !important;
-        }
         .env-wrapper {
             background: var(--secondary-bg);
             border-radius: var(--radius);
@@ -2484,19 +2477,6 @@
             text-transform: uppercase; margin-bottom: 10px; opacity: 0.8;
             position: relative; z-index: 1;
             display: flex; align-items: center; gap: 6px;
-        }
-        #envelope-input {
-            background: transparent !important;
-            border: none !important;
-            outline: none !important;
-            font-family: var(--font-family) !important;
-            font-size: 14px !important;
-            line-height: 2 !important;
-            color: var(--text-primary) !important;
-            width: 100%; resize: none;
-            padding-left: 16px;
-            min-height: 160px;
-            position: relative; z-index: 1;
         }
         .env-letter-paper {
             background: var(--primary-bg);
@@ -10812,13 +10792,11 @@
     display: none !important;
 }
 
-/* 顶部栏按钮顺序：信箱 · 陪伴 · 公告 · 情侣空间 · 设置 */
+/* 顶部栏按钮顺序： 陪伴 · 情侣空间 · 设置 */
 .header-actions { display: flex; }
-#envelope-header-btn  { order: 1; }
-#companion-btn        { order: 2; }
-#daily-greeting-btn   { order: 3; }
-#moments-header-btn   { order: 4; }
-#settings-btn         { order: 5; }
+#companion-btn        { order: 1; }
+#moments-header-btn   { order: 2; }
+#settings-btn         { order: 3; }
 
 /* 底部输入区：隐藏让对方继续说、批量发送、发送按钮 */
 #continue-btn,

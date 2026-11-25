@@ -49,7 +49,6 @@
     var SESSION_TEXT_NEEDLES = [
         // 聊天
         'chatMessages', 'chatSettings', 'showPartnerNameInChat',
-        'envelopeData', 'pending_envelope',
         // 回复 / 氛围
         'customReplies', 'customPokes', 'customStatuses', 'customMottos',
         'customIntros', 'customEmojis', 'customPeriodCare',

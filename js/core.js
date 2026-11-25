@@ -682,7 +682,6 @@ const loadData = async () => {
         }
 
         try { await initMoodData(); } catch(e) { console.warn("心情数据加载失败", e); }
-        try { await loadEnvelopeData(); } catch(e) { console.warn("信封数据加载失败", e); }
         
         displayedMessageCount = HISTORY_BATCH_SIZE;
         msgViewMode = 'latest'; // 切换/加载会话时，重置掉"历史浏览模式"，避免带着上一个会话的浏览状态串过来
@@ -692,7 +691,6 @@ const loadData = async () => {
         setTimeout(() => {
             applyAllAvatarFrames();
             manageAutoSendTimer(); 
-            checkEnvelopeStatus(); 
             if (typeof checkMomentsStatus === 'function') checkMomentsStatus();
             updateUI();
             if (settings.customBubbleCss) {
