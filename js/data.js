@@ -147,6 +147,17 @@
 
     function writeHTML(mc) {
         mc.innerHTML = INNER_HTML;
+        var dmBody = mc.querySelector('.dm-body');
+    if (dmBody) {
+        Array.from(dmBody.childNodes).forEach(function(node) {
+            if (node.nodeType === 3 && node.nodeValue.trim() === 'NaN') {
+                var label = document.createElement('div');
+                label.className = 'dm-section-label danger-label';
+                label.innerHTML = '<i class="fas fa-triangle-exclamation"></i> 危险操作';
+                node.replaceWith(label);
+            }
+        });
+    }
         mc.dataset.dm6Built = 'v11'; 
         ensureDrawersOnBody();
         bindAll(mc);
