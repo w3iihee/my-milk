@@ -503,29 +503,7 @@ window.addEventListener('load', function() {
         });
     }, 3000);
 
-    setTimeout(function() {
-        try {
-            if (localStorage.getItem('dailyGreetingShown') === new Date().toDateString()) return;
-            try { if (typeof checkPartnerDailyMood === 'function') checkPartnerDailyMood(); } catch(e2) { console.warn('checkPartnerDailyMood error:', e2); }
-            if (typeof _buildDailyGreeting === 'function') _buildDailyGreeting();
-            if (window.localforage && window.APP_PREFIX) {
-                localforage.getItem(window.APP_PREFIX + 'tour_seen').then(function(seen) {
-                    if (seen) {
-                        var modal = document.getElementById('daily-greeting-modal');
-                        if (modal) modal.classList.remove('hidden');
-                        localStorage.setItem('dailyGreetingShown', new Date().toDateString());
-                    }
-                }).catch(function() {
-                    var modal = document.getElementById('daily-greeting-modal');
-                    if (modal) modal.classList.remove('hidden');
-                    localStorage.setItem('dailyGreetingShown', new Date().toDateString());
-                });
-            } else {
-                var modal = document.getElementById('daily-greeting-modal');
-                if (modal) modal.classList.remove('hidden');
-                localStorage.setItem('dailyGreetingShown', new Date().toDateString());
-            }
-        } catch(e) { console.warn('Daily greeting timing error:', e); }
+   
 
         // 启动时检查梦角是否主动来信
         try {

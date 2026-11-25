@@ -251,7 +251,7 @@ html[data-theme="dark"] #cs-transition-overlay{background:radial-gradient(circle
                     <span id="env-entry-badge" style="display:none;position:absolute;top:3px;right:3px;width:7px;height:7px;background:var(--accent-color);border-radius:50%;border:1.5px solid var(--primary-bg);pointer-events:none;"></span>
                 </button>
                 <button id="companion-btn" class="action-btn" title="陪伴"><i class="fas fa-hand-holding-heart"></i></button>
-                <button id="daily-greeting-btn" class="action-btn" title="今日公告" onclick="reopenDailyGreeting()"><i class="fas fa-newspaper" style="font-size:16px;"></i></button>
+               
                 <button id="moments-header-btn" class="action-btn" title="情侣空间" onclick="openMomentsWithTransition()" style="position:relative;">
                     <i class="ti ti-home-heart" style="font-size:19px;"></i>
                     <span id="moments-header-badge" style="display:none;position:absolute;top:3px;right:3px;width:7px;height:7px;background:var(--accent-color);border-radius:50%;border:1.5px solid var(--primary-bg);pointer-events:none;"></span>
@@ -3337,78 +3337,7 @@ html[data-theme="dark"] #cs-transition-overlay{background:radial-gradient(circle
     </div>
 
 
-<div id="daily-greeting-modal" class="hidden">
-    <div class="daily-greeting-card" id="daily-greeting-card">
-        <div class="dg-card-bg-layer" id="dg-card-bg-layer"></div>
-        <div class="dg-card-tint-overlay" id="dg-card-tint-overlay"></div>
-        <div class="dg-header-band" id="dg-header-band">
-            <div class="dg-header-band-bg" id="dg-header-band-bg"></div>
-            <div class="dg-header-band-overlay" id="dg-header-band-overlay"></div>
-            <div class="dg-header-band-shimmer"></div>
-            <div class="dg-header-band-wave"></div>
-            <input type="file" id="dg-header-img-input" accept="image/*" style="display:none">
-            <div class="dg-header-top">
-                <div class="dg-emoji-circle" id="dg-emoji">
-                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.9)" stroke-width="1.5"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
-                </div>
-                <div class="dg-header-text">
-                    <div class="dg-festival-label" id="dg-festival">GOOD MORNING</div>
-                    <div class="dg-main-title" id="dg-title">早上好</div>
-                </div>
-            </div>
-            <div class="dg-date-stamp" id="dg-date-stamp">— 今日公告已送达 —</div>
-        </div>
-        <div class="dg-body">
-            <div class="dg-section-label" id="dg-section-label-partner">梦角今日状态</div>
-            <div class="dg-mood-panel" id="dg-mood-panel">
-                <div class="dg-mood-icon-big" id="dg-partner-mood-icon">
-                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--accent-color)" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
-                </div>
-                <div class="dg-mood-info">
-                    <div class="dg-mood-name" id="dg-partner-mood">还没有记录今日心情</div>
-                    <div class="dg-mood-sub" id="dg-partner-mood-note"></div>
-                </div>
-            </div>
-            <div class="dg-info-grid">
-                <div class="dg-info-cell">
-                    <div class="dg-info-cell-icon">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent-color)" stroke-width="1.5"><path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9z"/></svg>
-                    </div>
-                   <div class="dg-info-cell-label" id="dg-weather-label">梦角的天气</div>
-                    <div class="dg-info-cell-val" id="dg-weather" onclick="startEditDgWeather(this)" style="cursor:pointer;text-decoration:underline dotted;text-underline-offset:3px;" title="点击编辑">晴朗</div>
-                </div>
-                <div class="dg-info-cell">
-                    <div class="dg-info-cell-icon">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent-color)" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-                    </div>
-                    <div class="dg-info-cell-label" id="dg-status-label">梦角的状态</div>
-                    <div class="dg-info-cell-val" id="dg-status">一切都好</div>
-                </div>
-            </div>
-            <div id="dg-deco-img-wrap" style="display:none; margin-bottom:12px; border-radius:12px; overflow:hidden;">
-                <img id="dg-deco-img" src="" alt="" style="width:100%; max-height:160px; object-fit:cover; display:block; border-radius:12px;">
-            </div>
-            <div class="dg-note-box" id="dg-note">
-                <div class="dg-note-inner">
-                    <div class="dg-note-weather-badge" id="dg-note-weather-badge" style="display:none;">
-                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9z"/></svg>
-                        <span id="dg-note-weather-text"></span>
-                    </div>
-                    <div id="dg-note-text">今天也要元气满满，我在这里陪着你 ✦</div>
-                </div>
-            </div>
-            <div class="dg-footer">
-                <button class="daily-greeting-close-btn" onclick="closeDailyGreeting()">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="vertical-align:-2px;margin-right:6px"><polyline points="20 6 9 17 4 12"/></svg>
-                    知道了，开始今天
-                </button>
-            </div>
-        </div>
 
-    </div>
-</div>
-
-<div id="dg-editor-modal" style="display:none;"></div>
 
 <!-- 陪伴日记 modal -->
 <div class="modal" id="companion-diary-modal">
