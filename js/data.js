@@ -412,24 +412,7 @@
             inp.click();
         });
 
-        var creditsBtn = mc.querySelector('#open-credits-btn');
-        if (creditsBtn) creditsBtn.addEventListener('click', function () {
-            var dataModal = document.getElementById('data-modal');
-            if (dataModal && typeof hideModal === 'function') hideModal(dataModal);
-            var disc = document.getElementById('disclaimer-modal');
-            if (disc && typeof showModal === 'function') showModal(disc);
-        });
-
-        var tutorialBtn = mc.querySelector('#replay-tutorial-btn');
-        if (tutorialBtn) tutorialBtn.addEventListener('click', function () {
-            var dataModal = document.getElementById('data-modal');
-            if (dataModal && typeof hideModal === 'function') hideModal(dataModal);
-            if (typeof startTour === 'function') {
-                if (window.localforage && window.APP_PREFIX) {
-                    localforage.removeItem(APP_PREFIX + 'tour_seen').then(startTour).catch(startTour);
-                } else { startTour(); }
-            }
-        });
+       
     }
 
     function onModalOpen(modal) {
