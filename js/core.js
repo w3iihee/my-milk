@@ -918,6 +918,7 @@ if (customMottos && customMottos.length > 0) {
                     star.style.animationDelay = `${delay}s`;
                     starsContainer.appendChild(star);
             }
+        }
             const particlesContainer = document.getElementById('welcome-particles');
             if (particlesContainer) {
                 particlesContainer.innerHTML = '';
@@ -2912,7 +2913,7 @@ window.initializeSession = async function() {
 
     await localforage.setItem(`${APP_PREFIX}lastSessionId`, SESSION_ID);
 }
-        }
+
 // 监听系统昼夜变化，实时更新 data-theme
 window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
     document.documentElement.setAttribute('data-theme', e.matches ? 'dark' : 'light');
