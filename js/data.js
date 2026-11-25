@@ -49,19 +49,7 @@
         +     '<button id="import-chat-btn"></button>'
         +   '</div>'
 
-        +   '<div class="dm-section-label"><i class="fas fa-info-circle"></i> 关于</div>'
-        +   '<div class="dm-row-card">'
-        +     '<div class="dm-row-item" id="replay-tutorial-btn-row" style="cursor:pointer">'
-        +       '<div class="dm-row-icon slate"><i class="fas fa-compass"></i></div>'
-        +       '<div class="dm-row-info"><div class="dm-row-title">重放新手引导</div><div class="dm-row-desc">重新播放功能介绍教程</div></div>'
-        +       '<button class="dm-nav-btn" id="replay-tutorial-btn"><i class="fas fa-play"></i></button>'
-        +     '</div>'
-        +     '<div class="dm-row-item" id="open-credits-row" style="cursor:pointer">'
-        +       '<div class="dm-row-icon violet"><i class="fas fa-scroll"></i></div>'
-        +       '<div class="dm-row-info"><div class="dm-row-title">声明与致谢</div><div class="dm-row-desc">开源声明、致谢名单</div></div>'
-        +       '<button class="dm-nav-btn" id="open-credits-btn"><i class="fas fa-chevron-right"></i></button>'
-        +     '</div>'
-        +   '</div>'
+        +   
 
         +   '<div class="dm-section-label danger-label"><i class="fas fa-triangle-exclamation"></i> 危险操作</div>'
         +   '<div class="dm-danger-cards dm-danger-cards-row">'
