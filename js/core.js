@@ -1024,8 +1024,12 @@ if (!element) return;
         if (subEl) { scrambleText(subEl, line2, 2000); }
     }, 600);
 } else {
-   const _tEl = document.getElementById('welcome-title-glitch'); if (_tEl) _tEl.textContent = "传讯";
-    const _sEl = document.getElementById('welcome-subtitle-scramble'); if (_sEl) _sEl.textContent = "请在设置中添加开场动画";
+   const welcomeTitleEl = document.getElementById('welcome-title-glitch');
+if (welcomeTitleEl) welcomeTitleEl.textContent = "传讯";
+
+const welcomeSubtitleEl = document.getElementById('welcome-subtitle-scramble');
+if (welcomeSubtitleEl) welcomeSubtitleEl.textContent = "";
+    
 }
 
 
