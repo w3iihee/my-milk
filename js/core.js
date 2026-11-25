@@ -991,13 +991,13 @@ if (titleEl) {
                 const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()';
                 const length = finalText.length;
                 let start = Date.now();
-
+if (!element) return;
                 const interval = setInterval(() => {
                     const now = Date.now();
                     const progress = (now - start) / duration;
 
                     if (progress >= 1) {
-                        element.textContent = finalText;
+                        if (element) element.textContent = finalText;
                         clearInterval(interval);
                         return;
                     }
@@ -1014,24 +1014,24 @@ if (titleEl) {
                             result += chars[Math.floor(Math.random() * chars.length)];
                         }
                     }
-                    element.textContent = result;
+                    if (element) element.textContent = result;
                 },
                     40);
             };
 
 
           setTimeout(() => {
-        scrambleText(subEl, line2, 2000);
+        if (subEl) { scrambleText(subEl, line2, 2000); }
     }, 600);
 } else {
-    document.getElementById('welcome-title-glitch').textContent = "传讯";
-    document.getElementById('welcome-subtitle-scramble').textContent = "请在设置中添加开场动画";
+   const _tEl = document.getElementById('welcome-title-glitch'); if (_tEl) _tEl.textContent = "传讯";
+    const _sEl = document.getElementById('welcome-subtitle-scramble'); if (_sEl) _sEl.textContent = "请在设置中添加开场动画";
 }
 
 
             const loaderBar = document.getElementById('loader-tech-bar');
             const statusText = document.getElementById('loader-status-text');
-            loaderBar.style.width = '0%';
+            if (loaderBar)loaderBar.style.width = '0%';
             const loadingPhases = [
                 { width: '15%', text: 'INITIALIZING · 初始化中' },
                 { width: '40%', text: 'LOADING MEMORIES · 读取记忆' },
@@ -1042,7 +1042,7 @@ if (titleEl) {
             const delays = [100, 700, 1600, 2400, 2900];
             delays.forEach((delay, i) => {
                 setTimeout(() => {
-                    loaderBar.style.width = loadingPhases[i].width;
+                    if (loaderBar)loaderBar.style.width = loadingPhases[i].width;
                     if (statusText) statusText.textContent = loadingPhases[i].text;
                 }, delay);
             });
