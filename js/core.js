@@ -899,23 +899,25 @@ if (customMottos && customMottos.length > 0) {
 
 
             const starsContainer = document.getElementById('stars-container');
-            starsContainer.innerHTML = '';
-            const starCount = 80;
-            for (let i = 0; i < starCount; i++) {
-                const star = document.createElement('div');
-                star.className = 'star';
-                const x = Math.random() * 100;
-                const y = Math.random() * 100;
-                const size = Math.random() * 2.5 + 0.5;
-                const duration = Math.random() * 4 + 2;
-                const delay = Math.random() * 6;
-                star.style.left = `${x}%`;
-                star.style.top = `${y}%`;
-                star.style.width = `${size}px`;
-                star.style.height = `${size}px`;
-                star.style.setProperty('--duration', `${duration}s`);
-                star.style.animationDelay = `${delay}s`;
-                starsContainer.appendChild(star);
+            if (starsContainer) {
+                starsContainer.innerHTML = '';
+                const starCount = 80;
+                for (let i = 0; i < starCount; i++) {
+                    const star = document.createElement('div');
+                    star.className = 'star';
+                    const x = Math.random() * 100;
+                    const y = Math.random() * 100;
+                    const size = Math.random() * 2.5 + 0.5;
+                    const duration = Math.random() * 4 + 2;
+                    const delay = Math.random() * 6;
+                    star.style.left = `${x}%`;
+                    star.style.top = `${y}%`;
+                    star.style.width = `${size}px`;
+                    star.style.height = `${size}px`;
+                    star.style.setProperty('--duration', `${duration}s`);
+                    star.style.animationDelay = `${delay}s`;
+                    starsContainer.appendChild(star);
+                    }
             }
             const particlesContainer = document.getElementById('welcome-particles');
             if (particlesContainer) {
