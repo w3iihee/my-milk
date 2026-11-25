@@ -149,6 +149,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     } catch (err) {
         console.error('严重初始化错误:', err);
+        showNotification('初始化异常: ' + (err && err.message ? err.message : String(err)));
         try {
             const backup = typeof _tryRecoverFromBackup === 'function' ? _tryRecoverFromBackup() : null;
             if (backup && Array.isArray(backup.messages) && backup.messages.length > 0) {
