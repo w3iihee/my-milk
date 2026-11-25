@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
 
         updateLoader('正在建立连接...', '10%');
-        await safeAwait(initializeSession());
+       if (typeof initializeSession === 'function') { await safeAwait(initializeSession()); }
 
         updateLoader('正在读取存档...', '40%');
         await safeAwait(loadData());
